@@ -3,6 +3,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      dist: {
+        src: ['public/client/*.js'],
+        dest: 'dist/built.js'
+      }
+
     },
 
     mochaTest: {
@@ -21,11 +26,16 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      dist: {
+        src: 'public/client/*.js',
+        dest: 'public/client/*.min.js'
+      }
     },
 
     jshint: {
       files: [
         // Add filespec list here
+        'public/client/*.js'
       ],
       options: {
         force: 'true',
