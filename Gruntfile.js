@@ -94,6 +94,10 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'concat',
+    'uglify',
+    'jshint',
+    'mochaTest'
   ]);
 
   grunt.registerTask('upload', function(n) {
@@ -106,10 +110,17 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     //add your deployment tasks here
+    'concat',
+    'uglify',
+    'jshint',
+    'mochaTest'
   ]);
   
   grunt.registerTask('heroku', [
-    ['compass:dist', 'autoprefixer', 'imagemin']
+    'concat',
+    'uglify',
+    'jshint',
+    'mochaTest'
   ]);
 
 
