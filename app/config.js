@@ -1,3 +1,33 @@
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function(){
+  var urlSchema = mongoose.Schema({
+    _id: "urlid",
+    url: String,
+    base_url: String,
+    code: String,
+    title: String,
+    visits: Number,
+    timestamp: Date
+  });
+
+  var userSchema = mongoose.Schema({
+    _id: "userid",
+    username: String,
+    password: String,
+    timestamp: Date
+  });
+
+  var Url = mongoose.model('Url', urlSchema);
+  var User= mongoose.model('User', userSchema); 
+
+});
+
+module.exports = db;
+
+/*
 var Bookshelf = require('bookshelf');
 var path = require('path');
 
@@ -43,3 +73,4 @@ db.knex.schema.hasTable('users').then(function(exists) {
 });
 
 module.exports = db;
+*/
